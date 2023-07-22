@@ -1,0 +1,262 @@
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-RIE8IGS;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use SLC1")
+sql = "select * from product"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use SQLSTAGING")
+cursor.execute("delete from product");
+query = "insert into product values(?,?,?,?,?,?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+
+
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-RIE8IGS\PRODUCTION;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use SLC")
+sql = "select * from iku"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use SQLSTAGING")
+query = "insert into iku values(?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+
+
+
+
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-214S8A6\PRODUCTION;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use SLC")
+sql = "select * from time"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use SQLSTAGING")
+query = "insert into time values(?,?,?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+
+
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-214S8A6\PRODUCTION;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use FTP")
+sql = "select * from LOCATION"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use SQLSTAGING")
+query = "insert into LOCATION values(?,?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+
+
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-214S8A6\PRODUCTION;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use FTP")
+sql = "select * from RAWMATERIAL"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use SQLSTAGING")
+query = "insert into RAWMATERIAL values(?,?,?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-214S8A6\PRODUCTION;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use FTP")
+sql = "select * from TEXT_FACT"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use SQLSTAGING")
+query = "insert into TEXT_FACT values(?,?,?,?,?,?,?,?,?,?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-214S8A6\PRODUCTION;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use SQLSTAGING")
+sql = "select * from TEXT_FACT"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use DWSTAGING")
+query = "insert into TEXT_FACT values(?,?,?,?,?,?,?,?,?,?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-214S8A6\PRODUCTION;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use SQLSTAGING")
+sql = "select * from IKU"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use DWSTAGING")
+query = "insert into IKU values(?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-214S8A6\PRODUCTION;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use SQLSTAGING")
+sql = "select * from LOCATION"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use DWSTAGING")
+query = "insert into LOCATION values(?,?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-214S8A6\PRODUCTION;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use SQLSTAGING")
+sql = "select * from PRODUCT"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use DWSTAGING")
+query = "insert into PRODUCT values(?,?,?,?,?,?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-214S8A6\PRODUCTION;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use SQLSTAGING")
+sql = "select * from RAWMATERIAL"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use DWSTAGING")
+query = "insert into RAWMATERIAL values(?,?,?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+import pyodbc
+import pandas.io.sql as psql
+
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-214S8A6\PRODUCTION;Trusted_Connection=yes;')
+cursor = cnxn.cursor()
+cursor.execute("use SQLSTAGING")
+sql = "select * from TIME"
+df = psql.read_sql_query(sql,cnxn)
+cursor.commit()
+df1=df.values.tolist()
+print(df1)
+cursor.execute("use DWSTAGING")
+query = "insert into TIME values(?,?,?,?)"
+cursor.executemany(query,df1)
+cursor.commit()
+print("row inserted")
+cnxn.close()
+
+sql data tools path
+
+https://docs.microsoft.com/en-us/sql/ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi?view=sql-server-2017
+
+Tableau Software path
+
+https://www.tableau.com/support/releases/desktop/10.5
+
+
+--How to access cube data?
+
+1.SSAS Browser
+2.TABLEAU
+3.EXCEL PIVOT TABLE
+4.MDX QUERY
+
+
+
+
+
+
+
